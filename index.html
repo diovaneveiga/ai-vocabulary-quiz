@@ -407,447 +407,491 @@
     </div>
 
     <script>
+        // Helper function to shuffle array
+        function shuffleArray(array) {
+            const shuffled = [...array];
+            for (let i = shuffled.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+            }
+            return shuffled;
+        }
+
+        // Helper function to create a question with shuffled options
+        function createQuestion(question, portuguese, correctAnswer, wrongAnswers) {
+            const allOptions = [correctAnswer, ...wrongAnswers];
+            const shuffledOptions = shuffleArray(allOptions);
+            const correctIndex = shuffledOptions.indexOf(correctAnswer);
+            
+            return {
+                question,
+                portuguese,
+                options: shuffledOptions,
+                correct: correctIndex
+            };
+        }
+
         const quizData = [
-            {
-                question: "What does <span class='term-highlight'>Algorithm</span> mean?",
-                portuguese: "Algoritmo",
-                options: [
+            createQuestion(
+                "What does <span class='term-highlight'>Algorithm</span> mean?",
+                "Algoritmo",
+                "A set of rules or instructions a computer follows to perform a task.",
+                [
                     "A type of computer hardware used for processing large amounts of data.",
-                    "A set of rules or instructions a computer follows to perform a task.",
                     "The physical memory of a computer.",
                     "A visual representation of data, like a chart or graph."
-                ],
-                correct: 1
-            },
-            {
-                question: "What is <span class='term-highlight'>Artificial Intelligence (AI)</span>?",
-                portuguese: "Inteligência Artificial (IA)",
-                options: [
+                ]
+            ),
+            createQuestion(
+                "What is <span class='term-highlight'>Artificial Intelligence (AI)</span>?",
+                "Inteligência Artificial (IA)",
+                "The simulation of human intelligence in machines to learn, reason, and self-correct.",
+                [
                     "A type of robot that can perform physical tasks.",
-                    "The simulation of human intelligence in machines to learn, reason, and self-correct.",
                     "A computer program that stores data.",
                     "A network of computers connected together."
-                ],
-                correct: 1
-            },
-            {
-                question: "What does <span class='term-highlight'>Automation</span> refer to?",
-                portuguese: "Automação",
-                options: [
+                ]
+            ),
+            createQuestion(
+                "What does <span class='term-highlight'>Automation</span> refer to?",
+                "Automação",
+                "The use of technology to perform tasks with minimal human assistance.",
+                [
                     "The process of manually performing tasks.",
-                    "The use of technology to perform tasks with minimal human assistance.",
                     "A type of software license.",
                     "The ability to connect to the internet."
-                ],
-                correct: 1
-            },
-            {
-                question: "What is <span class='term-highlight'>Machine Learning (ML)</span>?",
-                portuguese: "Aprendizado de Máquina",
-                options: [
+                ]
+            ),
+            createQuestion(
+                "What is <span class='term-highlight'>Machine Learning (ML)</span>?",
+                "Aprendizado de Máquina",
+                "A subset of AI where systems learn from data to improve performance without being explicitly programmed.",
+                [
                     "A type of computer hardware.",
-                    "A subset of AI where systems learn from data to improve performance without being explicitly programmed.",
                     "A programming language.",
                     "A method of storing data on a computer."
-                ],
-                correct: 1
-            },
-            {
-                question: "What does <span class='term-highlight'>Natural Language Processing (NLP)</span> enable?",
-                portuguese: "Processamento de Linguagem Natural (PLN)",
-                options: [
+                ]
+            ),
+            createQuestion(
+                "What does <span class='term-highlight'>Natural Language Processing (NLP)</span> enable?",
+                "Processamento de Linguagem Natural (PLN)",
+                "Computers to understand, interpret, and generate human language.",
+                [
                     "Computers to perform mathematical calculations faster.",
-                    "Computers to understand, interpret, and generate human language.",
                     "Computers to store more data.",
                     "Computers to display graphics on a screen."
-                ],
-                correct: 1
-            },
-            {
-                question: "What is a <span class='term-highlight'>Neural Network</span>?",
-                portuguese: "Rede Neural",
-                options: [
+                ]
+            ),
+            createQuestion(
+                "What is a <span class='term-highlight'>Neural Network</span>?",
+                "Rede Neural",
+                "A computer system modeled on the human brain, composed of interconnected nodes.",
+                [
                     "A network of computers connected via the internet.",
-                    "A computer system modeled on the human brain, composed of interconnected nodes.",
                     "A type of database.",
                     "A programming framework."
-                ],
-                correct: 1
-            },
-            {
-                question: "What does <span class='term-highlight'>Pattern Recognition</span> involve?",
-                portuguese: "Reconhecimento de Padrões",
-                options: [
+                ]
+            ),
+            createQuestion(
+                "What does <span class='term-highlight'>Pattern Recognition</span> involve?",
+                "Reconhecimento de Padrões",
+                "The process of identifying trends, regularities, and patterns in data.",
+                [
                     "Creating visual designs.",
-                    "The process of identifying trends, regularities, and patterns in data.",
                     "Recognizing people's faces.",
                     "Understanding human emotions."
-                ],
-                correct: 1
-            },
-            {
-                question: "What is a <span class='term-highlight'>Prediction</span> in AI?",
-                portuguese: "Predição / Previsão",
-                options: [
+                ]
+            ),
+            createQuestion(
+                "What is a <span class='term-highlight'>Prediction</span> in AI?",
+                "Predição / Previsão",
+                "An output from an AI model that estimates a future outcome or unknown value.",
+                [
                     "A guess made by a human.",
-                    "An output from an AI model that estimates a future outcome or unknown value.",
                     "A statement about the past.",
                     "A rule set by a company."
-                ],
-                correct: 1
-            },
-            {
-                question: "What is <span class='term-highlight'>Supervised Learning</span>?",
-                portuguese: "Aprendizagem Supervisionada",
-                options: [
+                ]
+            ),
+            createQuestion(
+                "What is <span class='term-highlight'>Supervised Learning</span>?",
+                "Aprendizagem Supervisionada",
+                "A type of ML where the model learns from data that is already labeled with correct answers.",
+                [
                     "A type of ML where a person watches the computer learn.",
-                    "A type of ML where the model learns from data that is already labeled with correct answers.",
                     "A type of ML that requires internet connection.",
                     "A type of ML that only works with images."
-                ],
-                correct: 1
-            },
-            {
-                question: "What is <span class='term-highlight'>Unsupervised Learning</span>?",
-                portuguese: "Aprendizagem Não Supervisionada",
-                options: [
+                ]
+            ),
+            createQuestion(
+                "What is <span class='term-highlight'>Unsupervised Learning</span>?",
+                "Aprendizagem Não Supervisionada",
+                "A type of ML where the model learns from unlabeled data, finding patterns on its own.",
+                [
                     "Learning without a teacher.",
-                    "A type of ML where the model learns from unlabeled data, finding patterns on its own.",
                     "A type of learning that is illegal.",
                     "Learning from books instead of computers."
-                ],
-                correct: 1
-            },
-            {
-                question: "What is <span class='term-highlight'>Big Data</span>?",
-                portuguese: "Big Data",
-                options: [
+                ]
+            ),
+            createQuestion(
+                "What is <span class='term-highlight'>Big Data</span>?",
+                "Big Data",
+                "Extremely large and complex datasets that cannot be easily managed with traditional tools.",
+                [
                     "Data stored on a large hard drive.",
-                    "Extremely large and complex datasets that cannot be easily managed with traditional tools.",
                     "Data from big companies only.",
                     "Data that is displayed in large fonts."
-                ],
-                correct: 1
-            },
-            {
-                question: "What does <span class='term-highlight'>Data Analysis</span> involve?",
-                portuguese: "Análise de Dados",
-                options: [
+                ]
+            ),
+            createQuestion(
+                "What does <span class='term-highlight'>Data Analysis</span> involve?",
+                "Análise de Dados",
+                "The process of inspecting, cleaning, and modeling data to discover useful information.",
+                [
                     "Deleting data from a computer.",
-                    "The process of inspecting, cleaning, and modeling data to discover useful information.",
                     "Copying data to another location.",
                     "Encrypting data for security."
-                ],
-                correct: 1
-            },
-            {
-                question: "What is <span class='term-highlight'>Data Mining</span>?",
-                portuguese: "Mineração de Dados",
-                options: [
+                ]
+            ),
+            createQuestion(
+                "What is <span class='term-highlight'>Data Mining</span>?",
+                "Mineração de Dados",
+                "The practice of searching through large datasets to identify patterns and relationships.",
+                [
                     "Digging in the ground to find data.",
-                    "The practice of searching through large datasets to identify patterns and relationships.",
                     "Removing data from a database.",
                     "Creating new databases."
-                ],
-                correct: 1
-            },
-            {
-                question: "What is a <span class='term-highlight'>Dataset</span>?",
-                portuguese: "Conjunto de Dados",
-                options: [
+                ]
+            ),
+            createQuestion(
+                "What is a <span class='term-highlight'>Dataset</span>?",
+                "Conjunto de Dados",
+                "A collection of related data points that can be processed by a computer.",
+                [
                     "A single piece of information.",
-                    "A collection of related data points that can be processed by a computer.",
                     "A type of software program.",
                     "A computer storage device."
-                ],
-                correct: 1
-            },
-            {
-                question: "What is a <span class='term-highlight'>Forecast</span> in business?",
-                portuguese: "Previsão",
-                options: [
+                ]
+            ),
+            createQuestion(
+                "What is a <span class='term-highlight'>Forecast</span> in business?",
+                "Previsão",
+                "A prediction about future events based on analyzing past and present data.",
+                [
                     "A weather prediction.",
-                    "A prediction about future events based on analyzing past and present data.",
                     "A report about the past.",
                     "A list of current prices."
-                ],
-                correct: 1
-            },
-            {
-                question: "What is an <span class='term-highlight'>Insight</span> in data analysis?",
-                portuguese: "Insight / Percepção",
-                options: [
+                ]
+            ),
+            createQuestion(
+                "What is an <span class='term-highlight'>Insight</span> in data analysis?",
+                "Insight / Percepção",
+                "A deep understanding or valuable discovery from data analysis.",
+                [
                     "A type of software.",
-                    "A deep understanding or valuable discovery from data analysis.",
                     "A computer monitor.",
                     "A type of database."
-                ],
-                correct: 1
-            },
-            {
-                question: "What is <span class='term-highlight'>Generative AI</span>?",
-                portuguese: "IA Generativa",
-                options: [
+                ]
+            ),
+            createQuestion(
+                "What is <span class='term-highlight'>Generative AI</span>?",
+                "IA Generativa",
+                "AI that can create new, original content such as text, images, or music.",
+                [
                     "AI that deletes content.",
-                    "AI that can create new, original content such as text, images, or music.",
                     "AI that only analyzes data.",
                     "AI that stores information."
-                ],
-                correct: 1
-            },
-            {
-                question: "What is a <span class='term-highlight'>Chatbot</span>?",
-                portuguese: "Chatbot",
-                options: [
+                ]
+            ),
+            createQuestion(
+                "What is a <span class='term-highlight'>Chatbot</span>?",
+                "Chatbot",
+                "An AI program that simulates human conversation, often used for customer service.",
+                [
                     "A type of robot that moves around.",
-                    "An AI program that simulates human conversation, often used for customer service.",
                     "A social media platform.",
                     "A type of email system."
-                ],
-                correct: 1
-            },
-            {
-                question: "What is a <span class='term-highlight'>Large Language Model (LLM)</span>?",
-                portuguese: "Modelo de Linguagem de Grande Porte",
-                options: [
+                ]
+            ),
+            createQuestion(
+                "What is a <span class='term-highlight'>Large Language Model (LLM)</span>?",
+                "Modelo de Linguagem de Grande Porte",
+                "The core technology behind generative AI like ChatGPT, trained on vast text data.",
+                [
                     "A very large book.",
-                    "The core technology behind generative AI like ChatGPT, trained on vast text data.",
                     "A type of database.",
                     "A programming language."
-                ],
-                correct: 1
-            },
-            {
-                question: "What is <span class='term-highlight'>Prompt Engineering</span>?",
-                portuguese: "Engenharia de Prompt",
-                options: [
+                ]
+            ),
+            createQuestion(
+                "What is <span class='term-highlight'>Prompt Engineering</span>?",
+                "Engenharia de Prompt",
+                "The skill of designing and refining prompts to get the best possible output from a generative AI model.",
+                [
                     "Building physical structures.",
-                    "The skill of designing and refining prompts to get the best possible output from a generative AI model.",
                     "Creating a schedule.",
                     "Writing computer code."
-                ],
-                correct: 1
-            },
-            {
-                question: "What is a <span class='term-highlight'>Prompt</span> in AI?",
-                portuguese: "Comando / Instrução",
-                options: [
+                ]
+            ),
+            createQuestion(
+                "What is a <span class='term-highlight'>Prompt</span> in AI?",
+                "Comando / Instrução",
+                "The input (usually text) given to a generative AI model to instruct it.",
+                [
                     "A reminder to do something.",
-                    "The input (usually text) given to a generative AI model to instruct it.",
                     "A type of computer error.",
                     "A software update."
-                ],
-                correct: 1
-            },
-            {
-                question: "What is <span class='term-highlight'>Sentiment Analysis</span>?",
-                portuguese: "Análise de Sentimento",
-                options: [
+                ]
+            ),
+            createQuestion(
+                "What is <span class='term-highlight'>Sentiment Analysis</span>?",
+                "Análise de Sentimento",
+                "Using NLP to identify if text expresses positive, negative, or neutral opinions.",
+                [
                     "Understanding people's emotions by looking at them.",
-                    "Using NLP to identify if text expresses positive, negative, or neutral opinions.",
                     "Analyzing financial statements.",
                     "Studying psychology."
-                ],
-                correct: 1
-            },
-            {
-                question: "What is <span class='term-highlight'>Bias in AI</span>?",
-                portuguese: "Viés (em IA)",
-                options: [
+                ]
+            ),
+            createQuestion(
+                "What is <span class='term-highlight'>Bias in AI</span>?",
+                "Viés (em IA)",
+                "A systematic error in an AI system that leads to unfair or inaccurate outcomes.",
+                [
                     "A preference for one type of food.",
-                    "A systematic error in an AI system that leads to unfair or inaccurate outcomes.",
                     "A type of computer virus.",
                     "A programming mistake that crashes the system."
-                ],
-                correct: 1
-            },
-            {
-                question: "What is a <span class='term-highlight'>Black Box Model</span>?",
-                portuguese: "Caixa Preta (Modelo)",
-                options: [
+                ]
+            ),
+            createQuestion(
+                "What is a <span class='term-highlight'>Black Box Model</span>?",
+                "Caixa Preta (Modelo)",
+                "An AI system where the internal workings are not visible or understandable to humans.",
+                [
                     "A computer that is painted black.",
-                    "An AI system where the internal workings are not visible or understandable to humans.",
                     "A type of database.",
                     "A security system."
-                ],
-                correct: 1
-            },
-            {
-                question: "What is <span class='term-highlight'>Ethical AI</span>?",
-                portuguese: "IA Ética",
-                options: [
+                ]
+            ),
+            createQuestion(
+                "What is <span class='term-highlight'>Ethical AI</span>?",
+                "IA Ética",
+                "The practice of using AI in a way that is morally responsible, fair, and transparent.",
+                [
                     "AI that is expensive.",
-                    "The practice of using AI in a way that is morally responsible, fair, and transparent.",
                     "AI that only works during business hours.",
                     "AI that requires special training."
-                ],
-                correct: 1
-            },
-            {
-                question: "What does <span class='term-highlight'>Optimise/Optimize</span> mean?",
-                portuguese: "Otimizar",
-                options: [
+                ]
+            ),
+            createQuestion(
+                "What does <span class='term-highlight'>Optimise/Optimize</span> mean?",
+                "Otimizar",
+                "To make something as effective or functional as possible.",
+                [
                     "To make something slower.",
-                    "To make something as effective or functional as possible.",
                     "To break something into pieces.",
                     "To copy something."
-                ],
-                correct: 1
-            },
-            {
-                question: "What is <span class='term-highlight'>Digital Presence</span>?",
-                portuguese: "Presença Digital",
-                options: [
+                ]
+            ),
+            createQuestion(
+                "What is <span class='term-highlight'>Digital Presence</span>?",
+                "Presença Digital",
+                "How a brand appears online, including website, social media, and search results.",
+                [
                     "Being physically present at a computer.",
-                    "How a brand appears online, including website, social media, and search results.",
                     "Having a digital watch.",
                     "Using digital cameras."
-                ],
-                correct: 1
-            },
-            {
-                question: "What is <span class='term-highlight'>Customer Experience (CX)</span>?",
-                portuguese: "Experiência do Cliente",
-                options: [
+                ]
+            ),
+            createQuestion(
+                "What is <span class='term-highlight'>Customer Experience (CX)</span>?",
+                "Experiência do Cliente",
+                "The overall perception a customer has of a company based on all interactions.",
+                [
                     "How long a customer has been shopping.",
-                    "The overall perception a customer has of a company based on all interactions.",
                     "The price of a product.",
                     "The location of a store."
-                ],
-                correct: 1
-            },
-            {
-                question: "What is a <span class='term-highlight'>Key Performance Indicator (KPI)</span>?",
-                portuguese: "Indicador-Chave de Desempenho",
-                options: [
+                ]
+            ),
+            createQuestion(
+                "What is a <span class='term-highlight'>Key Performance Indicator (KPI)</span>?",
+                "Indicador-Chave de Desempenho",
+                "A measurable value that demonstrates how effectively a company achieves objectives.",
+                [
                     "A type of computer keyboard.",
-                    "A measurable value that demonstrates how effectively a company achieves objectives.",
                     "A type of software.",
                     "A security password."
-                ],
-                correct: 1
-            },
-            {
-                question: "What is <span class='term-highlight'>Personalization</span>?",
-                portuguese: "Personalização",
-                options: [
+                ]
+            ),
+            createQuestion(
+                "What is <span class='term-highlight'>Personalization</span>?",
+                "Personalização",
+                "Tailoring a service or product to accommodate specific individuals or customer segments.",
+                [
                     "Making something personal property.",
-                    "Tailoring a service or product to accommodate specific individuals or customer segments.",
                     "Creating a personal website.",
                     "Writing a personal letter."
-                ],
-                correct: 1
-            },
-            {
-                question: "What does <span class='term-highlight'>Return on Investment (ROI)</span> measure?",
-                portuguese: "Retorno sobre o Investimento",
-                options: [
+                ]
+            ),
+            createQuestion(
+                "What does <span class='term-highlight'>Return on Investment (ROI)</span> measure?",
+                "Retorno sobre o Investimento",
+                "A performance measure used to evaluate the efficiency of an investment.",
+                [
                     "The time it takes to receive a package.",
-                    "A performance measure used to evaluate the efficiency of an investment.",
                     "The distance traveled by a product.",
                     "The weight of an object."
-                ],
-                correct: 1
-            },
-            {
-                question: "What is <span class='term-highlight'>Scalability</span>?",
-                portuguese: "Escalabilidade",
-                options: [
+                ]
+            ),
+            createQuestion(
+                "What is <span class='term-highlight'>Scalability</span>?",
+                "Escalabilidade",
+                "The ability of a system to handle growing amounts of work or be enlarged.",
+                [
                     "The ability to climb stairs.",
-                    "The ability of a system to handle growing amounts of work or be enlarged.",
                     "The size of a computer screen.",
                     "The speed of internet connection."
-                ],
-                correct: 1
-            },
-            {
-                question: "What is <span class='term-highlight'>Transparency in AI</span>?",
-                portuguese: "Transparência (em IA)",
-                options: [
+                ]
+            ),
+            createQuestion(
+                "What is <span class='term-highlight'>Transparency in AI</span>?",
+                "Transparência (em IA)",
+                "The principle that AI decisions should be understandable to humans.",
+                [
                     "Making something see-through.",
-                    "The principle that AI decisions should be understandable to humans.",
                     "The brightness of a computer screen.",
                     "The clarity of an image."
-                ],
-                correct: 1
-            },
-            {
-                question: "What is <span class='term-highlight'>Reinforcement Learning</span>?",
-                portuguese: "Aprendizagem por Reforço",
-                options: [
+                ]
+            ),
+            createQuestion(
+                "What is <span class='term-highlight'>Reinforcement Learning</span>?",
+                "Aprendizagem por Reforço",
+                "A type of ML where an agent learns by performing actions and receiving rewards or penalties.",
+                [
                     "Learning by reading books repeatedly.",
-                    "A type of ML where an agent learns by performing actions and receiving rewards or penalties.",
                     "Learning with a reinforced steel structure.",
                     "Learning in a reinforced classroom."
-                ],
-                correct: 1
-            },
-            {
-                question: "What is <span class='term-highlight'>Multimodal AI</span>?",
-                portuguese: "IA Multimodal",
-                options: [
+                ]
+            ),
+            createQuestion(
+                "What is <span class='term-highlight'>Multimodal AI</span>?",
+                "IA Multimodal",
+                "An AI system that can process and understand information from multiple types of data at once.",
+                [
                     "AI that uses multiple computers.",
-                    "An AI system that can process and understand information from multiple types of data at once.",
                     "AI that works in many countries.",
                     "AI that uses multiple programming languages."
-                ],
-                correct: 1
-            },
-            {
-                question: "What is <span class='term-highlight'>Text-to-Image</span> technology?",
-                portuguese: "Texto para Imagem",
-                options: [
+                ]
+            ),
+            createQuestion(
+                "What is <span class='term-highlight'>Text-to-Image</span> technology?",
+                "Texto para Imagem",
+                "A type of generative AI that creates images based on text descriptions.",
+                [
                     "Converting images to text documents.",
-                    "A type of generative AI that creates images based on text descriptions.",
                     "Taking screenshots of text.",
                     "Copying text from images."
-                ],
-                correct: 1
-            },
-            {
-                question: "What is <span class='term-highlight'>Hallucination in AI</span>?",
-                portuguese: "Alucinação (IA)",
-                options: [
+                ]
+            ),
+            createQuestion(
+                "What is <span class='term-highlight'>Hallucination in AI</span>?",
+                "Alucinação (IA)",
+                "When a generative AI produces incorrect information it presents as fact.",
+                [
                     "When a computer sees things that aren't there.",
-                    "When a generative AI produces incorrect information it presents as fact.",
                     "When a computer overheats.",
                     "When software crashes."
-                ],
-                correct: 1
-            },
-            {
-                question: "What is <span class='term-highlight'>Governance in AI</span>?",
-                portuguese: "Governança (de IA)",
-                options: [
+                ]
+            ),
+            createQuestion(
+                "What is <span class='term-highlight'>Governance in AI</span>?",
+                "Governança (de IA)",
+                "The framework of rules and processes for managing AI technologies within an organization.",
+                [
                     "The government's use of AI.",
-                    "The framework of rules and processes for managing AI technologies within an organization.",
                     "Laws about artificial intelligence.",
                     "International agreements about AI."
-                ],
-                correct: 1
-            },
-            {
-                question: "What is <span class='term-highlight'>Structured Data</span>?",
-                portuguese: "Dados Estruturados",
-                options: [
+                ]
+            ),
+            createQuestion(
+                "What is <span class='term-highlight'>Structured Data</span>?",
+                "Dados Estruturados",
+                "Highly organized data that fits neatly into tables or databases.",
+                [
                     "Data that is very organized and neat.",
-                    "Highly organized data that fits neatly into tables or databases.",
                     "Data that is stored in buildings.",
                     "Data that is arranged alphabetically."
-                ],
-                correct: 1
-            },
-            {
-                question: "What is <span class='term-highlight'>Unstructured Data</span>?",
-                portuguese: "Dados Não Estruturados",
-                options: [
+                ]
+            ),
+            createQuestion(
+                "What is <span class='term-highlight'>Unstructured Data</span>?",
+                "Dados Não Estruturados",
+                "Data that is not organized in a pre-defined manner, like emails or videos.",
+                [
                     "Data that is messy and disorganized.",
-                    "Data that is not organized in a pre-defined manner, like emails or videos.",
                     "Data that is stored outside.",
                     "Data that is written on paper."
-                ],
-                correct: 1
-            }
+                ]
+            ),
+            createQuestion(
+                "What is <span class='term-highlight'>Cognitive Computing</span>?",
+                "Computação Cognitiva",
+                "AI systems that mimic human thought processes, including reasoning and natural language.",
+                [
+                    "Computing that requires human thinking.",
+                    "A type of brain implant technology.",
+                    "Computing that only works with images."
+                ]
+            ),
+            createQuestion(
+                "What is <span class='term-highlight'>Training Data</span>?",
+                "Dados de Treinamento",
+                "The dataset used to teach or train an AI model.",
+                [
+                    "Data used to teach humans about AI.",
+                    "Data collected after an AI model is trained.",
+                    "Data that is used to test a model."
+                ]
+            ),
+            createQuestion(
+                "What is <span class='term-highlight'>Text-to-Speech</span> technology?",
+                "Texto para Fala",
+                "AI technology that converts written text into spoken voice output.",
+                [
+                    "Technology that converts speech to text.",
+                    "A type of music player.",
+                    "A telephone system."
+                ]
+            ),
+            createQuestion(
+                "What does <span class='term-highlight'>Metadata</span> mean?",
+                "Metadados",
+                "Data that provides information about other data, such as author, date created, or file size.",
+                [
+                    "Data that is very large.",
+                    "Data that is stored in the cloud.",
+                    "Data that is encrypted."
+                ]
+            ),
+            createQuestion(
+                "What is <span class='term-highlight'>Qualitative Data</span>?",
+                "Dados Qualitativos",
+                "Descriptive, non-numerical data such as customer feedback or interview transcripts.",
+                [
+                    "Data that is of high quality.",
+                    "Data that is very accurate.",
+                    "Data that is stored in databases."
+                ]
+            ),
+            createQuestion(
+                "What is <span class='term-highlight'>Quantitative Data</span>?",
+                "Dados Quantitativos",
+                "Numerical data that can be measured, such as sales figures or website clicks.",
+                [
+                    "Data that is in large quantities.",
+                    "Data that is stored in spreadsheets.",
+                    "Data that is very important."
+                ]
+            )
         ];
 
         let currentQuestion = 0;
